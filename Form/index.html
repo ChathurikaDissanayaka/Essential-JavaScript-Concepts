@@ -19,6 +19,7 @@
                     id="astronautName" 
                     name="astronautName"
                     placeholder="Neil Armstrong"
+                    pattern="[a-zA-Z0-9]+"
                     required
                     >
                 <label for="astronautEmail">Astronaut Email</label>
@@ -35,8 +36,19 @@
                     id="astronautPassword" 
                     name="astronautPassword"
                     placeholder="******"
+                    minlength="8"
+                    maxlength="15"
                     required
                     >
+                <label for="astronautName">Country Code</label>
+                <input 
+                    required
+                    type="text" 
+                    id="astronautCountryCode" 
+                    name="astronautCountryCode"
+                    pattern="[a-zA-Z]{3}"
+                    placeholder="Fra"
+                    > 
                 <button type="submit">submit</button>
             </form>    
         </main>
