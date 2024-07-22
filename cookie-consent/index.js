@@ -13,7 +13,10 @@ setTimeout(function(){
 
  consentForm.addEventListener('submit', function(e){
   e.preventDefault()
-  console.log('form submitted')
+
+  const consentFormData = new FormData(consentForm)
+  console.log(consentFormData)
+
   modalTextEl.innerHTML = `
   <div class="modal-inner-loading">
     <img src="images/loading.svg" class="loading">
