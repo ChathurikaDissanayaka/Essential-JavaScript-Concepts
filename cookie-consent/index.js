@@ -15,7 +15,7 @@ setTimeout(function(){
   e.preventDefault()
 
   const consentFormData = new FormData(consentForm)
-  console.log(consentFormData)
+  const name = consentFormData.get('fullName')
 
   modalTextEl.innerHTML = `
   <div class="modal-inner-loading">
@@ -31,11 +31,11 @@ setTimeout(function(){
 
   setTimeout(function(){
     document.getElementById('modal-inner').innerHTML = `
-    <h2>Thanks you sucker! </h2>
-    <p>We just sold the rights to your eternal soul.</p>
-    <div class="idiot-gif">
-        <img src="images/pirate.gif">
-    </div>` 
+        <h2>Thanks <span class="modal-display-name">${name}</span>, you sucker! </h2>
+        <p>We just sold the rights to your eternal soul.</p>
+        <div class="idiot-gif">
+            <img src="images/pirate.gif">
+        </div>` 
   }, 3000)
 
  }) 
