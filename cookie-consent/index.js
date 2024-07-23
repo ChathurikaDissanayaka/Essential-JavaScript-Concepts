@@ -3,6 +3,7 @@ const modalCloseBtn = document.getElementById('modal-close-btn')
 const consentForm = document.getElementById('consent-form')
 const modalTextEl = document.getElementById('modal-text')
 const declineBtn = document.getElementById('decline')
+const modalChoiceBtns = document.getElementById('modal-choice-btns')
 
 setTimeout(function(){
    modal.style.display = 'block'
@@ -43,5 +44,5 @@ setTimeout(function(){
  }) 
 
  declineBtn.addEventListener('mouseenter', function(){
-  console.log("ddddddddd")
+  modalChoiceBtns.classList.toggle('reverse')
  })
