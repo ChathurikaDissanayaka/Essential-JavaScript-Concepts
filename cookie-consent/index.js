@@ -2,6 +2,7 @@ const modal = document.getElementById('modal')
 const modalCloseBtn = document.getElementById('modal-close-btn')
 const consentForm = document.getElementById('consent-form')
 const modalTextEl = document.getElementById('modal-text')
+const declineBtn = document.getElementById('decline')
 
 setTimeout(function(){
    modal.style.display = 'block'
@@ -36,6 +37,11 @@ setTimeout(function(){
         <div class="idiot-gif">
             <img src="images/pirate.gif">
         </div>` 
-  }, 3000)
 
+        modalCloseBtn.disabled = false
+  }, 3000)
  }) 
+
+ declineBtn.addEventListener('mouseenter', function(){
+  console.log("ddddddddd")
+ })
