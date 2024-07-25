@@ -1,1 +1,1 @@
-# Essential-JavaScript-Concepts
+# Essential JavaScript Concepts
