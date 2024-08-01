@@ -170,9 +170,18 @@ const catsData = [
 ]
 
 function getEmotionsArray(cats){
-    for(let cat of cats){
-        console.log(cat)
+    const emotions = []
+    for (let cat of cats){
+        for (let emotion of cat.emotionTags){
+            // console.log(emotion)
+            emotions.push(emotion)
+        }
+        
     }
+    return emotions
 }
     
-    getEmotionsArray(catsData)
+function renderEmotionsRadios(cats){
+    const emotions = getEmotionsArray(cats)
+    console.log(emotions)
+}
