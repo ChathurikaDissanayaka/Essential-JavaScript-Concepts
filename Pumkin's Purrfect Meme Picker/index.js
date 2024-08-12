@@ -1,72 +1,81 @@
-import { catsData } from './data.js'
+import { catsData } from "./data.js";
 
-const emotionRadios = document.getElementById('emotion-radios')
-const getImageBtn =  document.getElementById('get-image-btn')
-const gifsOnlyOption = document.getElementById('gifs-only-option')
+const emotionRadios = document.getElementById("emotion-radios");
+const getImageBtn = document.getElementById("get-image-btn");
+const gifsOnlyOption = document.getElementById("gifs-only-option");
 
-emotionRadios.addEventListener('change', highlightCheckedOption)
-getImageBtn.addEventListener('click', getMatchingCatsArray)
+emotionRadios.addEventListener("change", highlightCheckedOption);
 
-function highlightCheckedOption(e){
-    const radioArray = document.getElementsByClassName('radio')
-    
-    for(let radioItem of radioArray){
-        radioItem.classList.remove('highlight')
-    }
+getImageBtn.addEventListener("click", renderCat);
 
-    document.getElementById(e.target.id).parentElement.classList.add("highlight")
+function highlightCheckedOption(e) {
+  const radios = document.getElementsByClassName("radio");
+  for (let radio of radios) {
+    radio.classList.remove("highlight");
+  }
+  document.getElementById(e.target.id).parentElement.classList.add("highlight");
 }
 
-function getMatchingCatsArray(){
-    const isGif = gifsOnlyOption.checked
+function getMatchingCatsArray() {
+  if (document.querySelector('input[type="radio"]:checked')) {
+    const selectedEmotion = document.querySelector(
+      'input[type="radio"]:checked'
+    ).value;
+    const isGif = gifsOnlyOption.checked;
 
-    if(document.querySelector('input[type="radio"]:checked')){
-        const selectedEmotion = document.querySelector('input[type="radio"]:checked').value
-
-        const matchingCatsArray = catsData.filter(function(cat){
-            if(isGif){
-                return cat.emotionTags.includes(selectedEmotion) && cat.isGif
-            }
-            return cat.emotionTags.includes(selectedEmotion)
-        })
-        
-        return console.log(matchingCatsArray) 
-    }
+    const matchingCatsArray = catsData.filter(function (cat) {
+      if (isGif) {
+        return cat.emotionTags.includes(selectedEmotion) && cat.isGif;
+      }
+      return cat.emotionTags.includes(selectedEmotion);
+    });
+    return matchingCatsArray;
+  }
 }
 
-function getEmotionsArray(cats){
-    const emotionsArray = []
-    for (let cat of cats){
-        for (let emotion of cat.emotionTags){
-            if(!emotionsArray.includes(emotion)){
-                emotionsArray.push(emotion)
-            }
-        }
-    }
-    return emotionsArray
+function getSingleCatObject() {
+  const catsArray = getMatchingCatsArray();
+
+  if (catsArray.length == 1) {
+    return catsArray[0];
+  } else {
+    const randomIndex = Math.floor(Math.random(1, catsArray.length) * catsArray.length)
+    return catsArray[randomIndex]
+  }
 }
 
-function renderEmotionsRadios(cats){
-    let radioItems = ``
-    const emotions = getEmotionsArray(cats)
-    for (let emotion of emotions){
-        radioItems += `
+function renderCat() {
+  getSingleCatObject();
+}
+
+function getEmotionsArray(cats) {
+  const emotionsArray = [];
+  for (let cat of cats) {
+    for (let emotion of cat.emotionTags) {
+      if (!emotionsArray.includes(emotion)) {
+        emotionsArray.push(emotion);
+      }
+    }
+  }
+  return emotionsArray;
+}
+
+function renderEmotionsRadios(cats) {
+  let radioItems = ``;
+  const emotions = getEmotionsArray(cats);
+  for (let emotion of emotions) {
+    radioItems += `
         <div class="radio">
             <label for="${emotion}">${emotion}</label>
             <input
-                type="radio"
-                id="${emotion}"
-                value="${emotion}"
-                name="emotions"
-                >
-        </div>
-        ` 
-    }
-    emotionRadios.innerHTML = radioItems
+            type="radio"
+            id="${emotion}"
+            value="${emotion}"
+            name="emotions"
+            >
+        </div>`;
+  }
+  emotionRadios.innerHTML = radioItems;
 }
 
-renderEmotionsRadios(catsData)
-
-
-
-
+renderEmotionsRadios(catsData);
