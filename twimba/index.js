@@ -39,4 +39,4 @@ function render(){
    feedDiv.innerHTML = getFeedHtml()
 }
     
-    render()
+render()
