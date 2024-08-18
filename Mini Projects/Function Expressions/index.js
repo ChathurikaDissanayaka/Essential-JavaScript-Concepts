@@ -1,4 +1,3 @@
-console.log(getTheftAlert(6))
 const getTheftAlert = function(numberOfTransactionsHour){
     if (numberOfTransactionsHour > 5) {
         return `You have made ${numberOfTransactionsHour} transactions 
@@ -6,5 +5,7 @@ const getTheftAlert = function(numberOfTransactionsHour){
                 compromised`
     }  
 }
+
+console.log(getTheftAlert(6))
 
 
