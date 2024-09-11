@@ -53,7 +53,9 @@ renderMenuItems()
 //                 <button class="complete-order-btn">Complete order</button>
 //             </div>`
 
-// Render this when order complete clicked
+// modal when order complete clicked
+
+// Render this when pay button clicked
 // `<div class="msg">
 //      <p>Thanks, James! Your order is on its way!</p>
 //  </div>`
