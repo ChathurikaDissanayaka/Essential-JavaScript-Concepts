@@ -1,7 +1,6 @@
 import { menuArray } from './data.js'
 
 const menu = document.getElementById('menu')
-const containerEl = document.getElementById('container')
 
 // Render menu items
 function renderMenuItems(){
@@ -22,9 +21,33 @@ function renderMenuItems(){
 
 renderMenuItems()
 
-// const addBtn = document.getElementById('add-btn')
+const addBtn = document.getElementById('add-btn')
 
-// addBtn.addEventListener('click', function(){
+addBtn.addEventListener('click', function(){
+    menu.innerHTML +=  `<div class="bill">
+                <h2 class="title">Your order</h2>
+                <div class="order-items">
+                    <div class="order-item">
+                        <h2>Pizza</h2>
+                        <button class="remove">remove</button>
+                        <p>$14</p>
+                    </div>
+                    <div class="order-item">
+                        <h2>Beer</h2>
+                        <button class="remove">remove</button>
+                        <p>$14</p>
+                    </div>
+                </div>
+            
+                <div class="total-price">
+                    <h2>Total price:</h2>
+                    <p>$26</p>
+                </div>
+
+                <div class="complte-order"></div>
+                <button class="complete-order-btn">Complete order</button>
+            </div>`
+})
 //     containerEl.innerHTML += `<div class="bill"></div>`
 // })
 
