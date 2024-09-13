@@ -34,7 +34,7 @@ h3{
 
 p{
     color: #8B8B8B;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .item-details{
@@ -102,7 +102,7 @@ section:last-child{
     border-bottom: 2px solid black;
 }
 
-.order-item{
+.order-item, .total-price{
     display: flex;
     align-self: center;
     justify-content: space-between;
@@ -110,10 +110,6 @@ section:last-child{
 }
 
 .total-price{
-    display: flex;
-    align-self: center;
-    justify-content: space-between;
-    margin: 15px 0;
     margin-bottom: 40px;
 }
 
