@@ -2,9 +2,9 @@ export const menuArray = [
     {
         name: "Pizza",
         ingredients: ["pepperoni", "mushrom", "mozarella"],
-        id: 0,
         price: 14,
         url: "images/pizza.png",
+        id: 0
     },
     {
         name: "Hamburger",
