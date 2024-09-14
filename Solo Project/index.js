@@ -16,33 +16,28 @@ document.addEventListener('click', function(e) {
        handleLikeClick(e.target.dataset.item) 
     }
 
-    // else if(e.target.dataset.bill){
-    //     handleRemoveItem(e.target.dataset.bill)
-    // }
+    else if(e.target.dataset.bill){
+        handleRemoveItem(e.target.dataset.bill)
+    }
 })
 
-// function handleRemoveItem(itemId){
-//     menuArray.forEach(function(menuItem){
-//         if(menuItem.id == itemId) {
-//             totalPrice -= menuItem.price
-//         }
-
-//         billItems.pop(generateBillItem(menuItem))
-//     })
-
-//     generateBill()
-
-// }
+function handleRemoveItem(itemId){
+    menuArray.forEach(function(menuItem){
+        if(menuItem.id == itemId && totalPrice != 0) {
+            totalPrice -= menuItem.price
+            billItems.pop(generateBillItem(menuItem))
+        }
+    })
+    generateBill()
+}
 
 function handleLikeClick(itemId) { 
     menuArray.forEach(function(menuItem){
         if(menuItem.id == itemId) {
             totalPrice += menuItem.price
-
             billItems.push(generateBillItem(menuItem))
         }
     })
-
     generateBill()
 }
 
@@ -61,8 +56,10 @@ function generateBill(){
                     <div class="complte-order"></div>
                     <button class="complete-order-btn">Complete order</button>`
 
-        console.log(totalPrice)
-        }
+        console.log("bill generated")
+    } else {
+        bill.innerHTML = ''
+    }
 }
 
 function generateBillItem(menuItem){
