@@ -50,7 +50,7 @@ function generateBill(){
     if(billItems.length != 0){
         bill.innerHTML = `<h2 class="title">Your order</h2>
                     <div class="order-items">
-                        ${billItems}
+                        ${billItems.join('')}
                     </div>
                 
                     <div class="total-price">
