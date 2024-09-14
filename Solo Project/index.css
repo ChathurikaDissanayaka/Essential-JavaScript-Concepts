@@ -1,4 +1,4 @@
-*, *::before, *::after{
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -7,7 +7,7 @@ body {
     font-family: "Smythe", system-ui;
 } 
 
-header{
+header {
     background-color: brown;
     background-image: url('images/header.png');
     background-size: cover;
@@ -16,39 +16,39 @@ header{
     width: 600px;
 }
 
-h2{
+h2 {
     font-size: 28px;
     margin: 0;
     font-weight: 400;
 }
 
-h3, p{
+h3, p {
     margin: 0;
     margin-top: 7px;
 }
 
-h3{
+h3 {
     font-size: 20px;
     font-weight: 400;
 }
 
-p{
+p {
     color: #8B8B8B;
     font-size: 20px;
 }
 
-.item-details{
+.item-details {
     width: 300px;
     padding: 0;
 }
 
-.container{
+.container {
     /* border: 1px solid black; */
     width: 600px;
     margin: 0 auto;
 }
 
-main section{
+main section {
     width: 508px;
     height: 140px;
     margin: 67px auto;
@@ -56,21 +56,21 @@ main section{
     padding-top: 5px;
 }
 
-section:last-child{
+section:last-child {
     margin-bottom: 0;
 }
 
-.item{
+.item {
     display: flex;
     justify-content: space-between;
 }
 
-.item-img{
+.item-img {
     height: 75px;
     width: 75px;
 }
 
-.add-btn{
+.add-btn {
     border-radius: 50%;
     border: 1px solid #DEDEDE;
     color: #3C3C3C;
@@ -82,42 +82,42 @@ section:last-child{
     text-align: center;
 }
 
-.bill{
+.bill {
     width: 508px;
     height: 319px;
     margin: 45px auto;
 }
 
-.bill p{
+.bill p {
     color: black;
 }
 
-.title{
+.title {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.order-items{
+.order-items {
     border-bottom: 2px solid black;
 }
 
-.order-item, .total-price{
+.order-item, .total-price {
     display: flex;
     align-self: center;
     justify-content: space-between;
     margin: 15px 0;
 }
 
-.order-item-left{
+.order-item-left {
     display: flex;
     align-self: center;
 }
 
-.total-price{
+.total-price {
     margin-bottom: 40px;
 }
 
-.complete-order-btn, .pay{
+.complete-order-btn, .pay {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -130,7 +130,7 @@ section:last-child{
     margin-bottom: 20px;
 }
 
-.remove{
+.remove {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 12px;
     border: none;
@@ -138,7 +138,7 @@ section:last-child{
     background-color: white;
 }
 
-.msg{
+.msg {
     text-align: center;
     padding: 30px;
     background-color: #ECFDF5;
@@ -146,36 +146,56 @@ section:last-child{
     margin: 0 auto;
 }
 
-.msg p{
+.msg p {
     font-size: 32px;
     color: #065F46;
 }
 
-.modal{
+.modal {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 508px;
     margin: 45px auto;
-    border: 1px solid black;
+    padding: 20px;
+    box-shadow: 0 0 70px black;
+    display: none;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    height: 520px;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
-form input{
-    margin: 20px auto;
+form input {
+    margin: 15px auto;
     width: 100%;
     padding: 20px 0;
 }
 
-form button{
-    margin: 30px auto;
+input::placeholder, input[type="text"] {
+    font-size: 20px;
 }
 
-.modal h2{
+input[type="text"] {
+    padding-left: 15px;
+}
+
+.modal button {
+    margin: 0;
+    margin-top: 25px;
+}
+
+.modal h2 {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    margin-top: 35px;
 }

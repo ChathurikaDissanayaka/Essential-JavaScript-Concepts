@@ -4,12 +4,10 @@ let billItems = []
 
 let totalPrice = 0
 
-let pizzaCount = 0
-let hamBurgerCount = 0
-let beerCount = 0
-
 const menu = document.getElementById('menu')
 const bill = document.getElementById('bill')
+const modal = document.getElementById('modal')
+const paymentDataForm = document.getElementById('payment-data')
 
 document.addEventListener('click', function(e) {
     if(e.target.dataset.item) {
@@ -19,6 +17,17 @@ document.addEventListener('click', function(e) {
     } else if(e.target.id == 'complete-order') {
         handleCompleteOrder()
     }
+})
+
+paymentDataForm.addEventListener('submit', function(e) {
+    e.preventDefault()
+
+    billItems = []
+
+    modal.style.display = 'none'
+    bill.innerHTML = `<div class="msg">
+            <p>Thanks, James! Your order is on its way!</p>
+        </div>`
 })
 
 function handleLikeClick(itemId) { 
@@ -31,7 +40,7 @@ function handleLikeClick(itemId) {
     generateBill()
 }
 
-function handleRemoveItem(itemId){
+function handleRemoveItem(itemId) {
     menuArray.forEach(function(menuItem){
         if(menuItem.id == itemId && totalPrice != 0) {
             totalPrice -= menuItem.price
@@ -41,12 +50,11 @@ function handleRemoveItem(itemId){
     generateBill()
 }
 
-function handleCompleteOrder(){
-    console.log('modal')
-    // modal when order complete clicked
+function handleCompleteOrder() {
+    modal.style.display = 'block'
 }
 
-function generateBill(){
+function generateBill() {
     if(billItems.length != 0){
         bill.innerHTML = `<h2 class="title">Your order</h2>
                     <div class="order-items">
@@ -60,14 +68,12 @@ function generateBill(){
 
                     <div class="complte-order"></div>
                     <button id = "complete-order" class = "complete-order-btn">Complete order</button>`
-
-        console.log("bill generated")
         } else {
             bill.innerHTML = ''
         }
 }
 
-function generateBillItem(menuItem){
+function generateBillItem(menuItem) {
     return `<div class="order-item">
                 <div class="order-item-left">
                     <h2>${menuItem.name}</h2>
@@ -77,18 +83,8 @@ function generateBillItem(menuItem){
             </div>`
 }
 
-// -----------------------------------------------------------------------
-
-
-// Render this when pay button clicked
-// `<div class="msg">
-//      <p>Thanks, James! Your order is on its way!</p>
-//  </div>`
-
-
-// -----------------------------------------------------------------------
 // Render menu items
-function renderMenuItems(){
+function renderMenuItems() {
     menuArray.forEach(item => {
         menu.innerHTML += `<section class="item">
             <img class="item-img" src=${item.url} alt="pizza">

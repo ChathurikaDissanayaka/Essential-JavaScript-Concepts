@@ -15,14 +15,14 @@
             <header></header>
             <main id="menu"></main>
             <div id="bill" class="bill"></div>
-            <div class="modal">
+            <div id="modal" class="modal">
                 <h2>Enter card details</h2>
-                <form action="">
-                    <input type="text" name="" id="" placeholder="Enter your name">
-                    <input type="text" name="" id="" placeholder="Enter card number">
-                    <input type="text" name="" id="" placeholder="Enter CVV">
+                <form id="payment-data">
+                    <input type="text" name="name" id="name" placeholder="Enter your name" aria-label="name" required />
+                    <input type="text" name="card-number" id="card-number" placeholder="Enter card number" aria-label="card number" required />
+                    <input type="text" name="cvv" id="cvv" placeholder="Enter CVV" aria-label="cvv" required />
+                    <button type="submit" id="pay" class="pay">Pay</button>
                 </form>
-                <button class="pay">Pay</button>
             </div>
         </div>
 
