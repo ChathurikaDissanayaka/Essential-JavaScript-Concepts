@@ -117,7 +117,7 @@ section:last-child{
     margin-bottom: 40px;
 }
 
-.complete-order-btn{
+.complete-order-btn, .pay{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -149,4 +149,33 @@ section:last-child{
 .msg p{
     font-size: 32px;
     color: #065F46;
+}
+
+.modal{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 508px;
+    margin: 45px auto;
+    border: 1px solid black;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    margin: 20px auto;
+    width: 100%;
+    padding: 20px 0;
+}
+
+form button{
+    margin: 30px auto;
+}
+
+.modal h2{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
 }
