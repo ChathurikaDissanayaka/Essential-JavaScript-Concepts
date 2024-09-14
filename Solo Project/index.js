@@ -12,14 +12,24 @@ const menu = document.getElementById('menu')
 const bill = document.getElementById('bill')
 
 document.addEventListener('click', function(e) {
-    if(e.target.dataset.item){
+    if(e.target.dataset.item) {
        handleLikeClick(e.target.dataset.item) 
-    }
-
-    else if(e.target.dataset.bill){
+    } else if(e.target.dataset.bill) {
         handleRemoveItem(e.target.dataset.bill)
+    } else if(e.target.id == 'complete-order') {
+        handleCompleteOrder()
     }
 })
+
+function handleLikeClick(itemId) { 
+    menuArray.forEach(function(menuItem){
+        if(menuItem.id == itemId) {
+            totalPrice += menuItem.price
+            billItems.push(generateBillItem(menuItem))
+        }
+    })
+    generateBill()
+}
 
 function handleRemoveItem(itemId){
     menuArray.forEach(function(menuItem){
@@ -31,14 +41,9 @@ function handleRemoveItem(itemId){
     generateBill()
 }
 
-function handleLikeClick(itemId) { 
-    menuArray.forEach(function(menuItem){
-        if(menuItem.id == itemId) {
-            totalPrice += menuItem.price
-            billItems.push(generateBillItem(menuItem))
-        }
-    })
-    generateBill()
+function handleCompleteOrder(){
+    console.log('modal')
+    // modal when order complete clicked
 }
 
 function generateBill(){
@@ -54,12 +59,12 @@ function generateBill(){
                     </div>
 
                     <div class="complte-order"></div>
-                    <button class="complete-order-btn">Complete order</button>`
+                    <button id = "complete-order" class = "complete-order-btn">Complete order</button>`
 
         console.log("bill generated")
-    } else {
-        bill.innerHTML = ''
-    }
+        } else {
+            bill.innerHTML = ''
+        }
 }
 
 function generateBillItem(menuItem){
@@ -74,7 +79,6 @@ function generateBillItem(menuItem){
 
 // -----------------------------------------------------------------------
 
-// modal when order complete clicked
 
 // Render this when pay button clicked
 // `<div class="msg">
