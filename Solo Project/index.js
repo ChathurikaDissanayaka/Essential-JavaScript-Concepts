@@ -1,8 +1,12 @@
 import { menuArray } from './data.js'
 
-let billItems = []
+let billItemObjects = menuArray
 
 let totalPrice = 0
+
+let pizzaCount = 0
+let burgerCount = 0
+let beerCount = 0
 
 const menu = document.getElementById('menu')
 const bill = document.getElementById('bill')
@@ -22,8 +26,6 @@ document.addEventListener('click', function(e) {
 paymentDataForm.addEventListener('submit', function(e) {
     e.preventDefault()
 
-    billItems = []
-
     const paymentFormData = new FormData(paymentDataForm)
     const name = paymentFormData.get('name')
 
@@ -37,7 +39,7 @@ function handleLikeClick(itemId) {
     menuArray.forEach(function(menuItem){
         if(menuItem.id == itemId) {
             totalPrice += menuItem.price
-            billItems.push(generateBillItem(menuItem))
+            billItemObjects[itemId].count = addItem(itemId)
         }
     })
     generateBill()
@@ -47,7 +49,7 @@ function handleRemoveItem(itemId) {
     menuArray.forEach(function(menuItem){
         if(menuItem.id == itemId && totalPrice != 0) {
             totalPrice -= menuItem.price
-            billItems.pop(generateBillItem(menuItem))
+            billItemObjects[itemId].count = removeItem(itemId)
         }
     })
     generateBill()
@@ -58,10 +60,18 @@ function handleCompleteOrder() {
 }
 
 function generateBill() {
-    if(billItems.length != 0){
+    let billItems = '' 
+
+    billItemObjects.map(function(currentObject){
+        if(currentObject.count > 0){
+            billItems += generateBillItem(currentObject)
+        }
+    })
+
+    if(billItems != ''){
         bill.innerHTML = `<h2 class="title">Your order</h2>
                     <div class="order-items">
-                        ${billItems.join('')}
+                        ${billItems}
                     </div>
                 
                     <div class="total-price">
@@ -82,8 +92,28 @@ function generateBillItem(menuItem) {
                     <h2>${menuItem.name}</h2>
                     <button data-bill="${menuItem.id}" class="remove">remove</button>
                 </div>
-                <p>$${menuItem.price}</p>
+                <p>${menuItem.count} X $${menuItem.price}</p>
             </div>`
+}
+
+function addItem(itemId){
+    if(itemId == 0){
+        return ++pizzaCount
+    } else if(itemId == 1) {
+        return ++burgerCount
+    } else {
+        return ++beerCount
+    }
+}
+
+function removeItem(itemId){
+    if(itemId == 0){
+        return --pizzaCount
+    } else if(itemId == 1) {
+        return --burgerCount
+    } else {
+        return --beerCount
+    }
 }
 
 // Render menu items
