@@ -24,9 +24,12 @@ paymentDataForm.addEventListener('submit', function(e) {
 
     billItems = []
 
+    const paymentFormData = new FormData(paymentDataForm)
+    const name = paymentFormData.get('name')
+
     modal.style.display = 'none'
     bill.innerHTML = `<div class="msg">
-            <p>Thanks, James! Your order is on its way!</p>
+            <p>Thanks, ${name}! Your order is on its way!</p>
         </div>`
 })
 
